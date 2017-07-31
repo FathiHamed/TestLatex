@@ -1,0 +1,161 @@
+\newpage
+\section
+{
+\textbf{ {\Large 
+بخش اول: راه اندازی مقدمات
+}}}
+
+\subsection{Github}
+تمامی تمارین فردی و گروهی شما از طریق سامانه Github دریافت می گردد. بنابراین شما به یک حساب کاربری در Github نیازمندید.
+تیم دستیاران تمرین برای تمامی تمارین مخازن خصوصی می سازند و در اختیارتان فرار می دهند.
+
+\subsection{Vagrant}
+تیم دستیاران تمرین تصویری
+\LTRfootnote{image}
+از ماشین مجازی لازم جهت تست و اجرای تمامی کدها فراهم کرده است. Vagrant ابزاری جهت مدیریت ماشینهای مجازی است. شما میتوانید 
+از Vagrant  برای دانلود و اجرای تصویر داده شده استفاده کنید.
+
+\notice{
+اگر تمایلی به استفاده از Vagrant نداشتید میتوانید از لینک زیر برروی Github ماشین مجازی را دریافت کرده و با نرم افزار مورد نظر خود اجرا کنید.
+}
+
+\notice{
+اگر از ویندوز استفاده می کنید، میتوانید از این گامها عبور کنید. در ادامه در خصوص راه اندازی برروی ویندوز توضیحاتی بیان خواهد گردید.
+}
+
+\begin{itemize}
+\item
+راه اندازی Vagrant نیازمند نصب و راه ندازی VirtualBox است. بنابراین شما نیاز دارید که مناسب ترین ورژن آنرا از اینجا دانلود و نصب کنید.
+در کلاس درس بیشتر در مورد ماشینهای مجازی توضیح داده خواهد شد، اما فعلا میتوانید تصور کنید که منظور از یک ماشین مجازی، نسخه نرم افزاری یک سخت افزار واقعی است.
+\item
+نسخه مناسب Vagrant را از اینجا نصب کنید. 
+\item
+دستورهای زیر را در ترمینال تایپ کنید.
+\begin{flushleft}
+\code{mkdir cs162-vm}
+\code{cd cs162-vm}
+\code{vagrant init cs162/spring2017}
+\code{vagrant up}
+\code{vagrant ssh}
+\end{flushleft}
+توجه کنید که دستور up به اتصال اینترنت نیازمند است.
+\item
+می بایست تمامی دستورهای Vagrant را از دایرکتوری cs162-vm اجرا کنید و مواظب باشید که این دایرکتوری را پاک نکنید.
+\item
+به منظور متوقف کردن ماشین مجازی میتوانید از دستور \begin{flushleft}
+\code{vagrant halt}
+\end{flushleft} استفاده کنید.
+\end{itemize}
+
+\subsubsection{
+\lr{Windows}:
+}
+از آنجایی که سیستم عامل ویندوز از ssh پشتیبانی نمیکند، دانبود و نصب Cygwin میتواند گزینه مناسبی باشد. شما میتوانید از اینجا راهنمای نصب تنظیمات Vagrant در ویندوز به کمک Cygwin را مشاهده نمایید.
+
+\subsubsection{
+\lr{Troubleshooting Vagrant}:
+}
+اگر دستور \begin{flushleft}
+\code{vagrant up}
+\end{flushleft} با مشکل مواجه شد، تلاش کنید تا با اجرای دستور \begin{flushleft}
+\code{vagrant provision}
+\end{flushleft} مشکل را برطرف نمایید.
+اگر کماکان مشکل برطرف نشد، برای تلاش آخر میتوانید به کمک دستور \begin{flushleft}
+\code{vagrant destroy}
+\end{flushleft} ماشین مجازی خود را از کار بیندازید و مجددا تلاش کنید تا دستور \begin{flushleft}
+\code{vagrant up}
+\end{flushleft} اجرا شود.
+
+\subsubsection{
+\lr{Git Name و Email}:
+}
+دستورهای زیر را اجرا کنید تا تنظیماتی که برای کامیت هایتان استفاده میکنید برقرار گردد.
+
+\begin{flushleft}
+\code{git config --global user.name "Your Name"}
+\code{git config --global user.email "Your Email"}
+\end{flushleft}
+
+\subsubsection{
+\lr{ssh-key}:
+}
+در این مرحله نیاز دارید که کلیدهای ssh خود را به منظور شناسایی Github از درون ماشین مجازیتان مظابق زیر تنظیم کنید.
+
+\begin{flushleft}
+\code{ssh-keygen -N "" -f ~/.ssh/id_rsa}
+\code{cat ~/.ssh/id_rsa.pub}
+\end{flushleft}
+
+دستور اول یک جفت کلید ssh برایتان تولید میکند. دستور دوم کلید عمومیتان را در صفحه نمایش نشان میدهد. شما میبایست به Github ورود کرده و سپس از این قسمت کلید عمومیتان را به حساب خود بفزایید. کلید شما باید با عبارت “ssh-rsa” شروع شده و با “vagrant@development” پایان یافته باشد.
+
+\subsubsection{
+\lr{مخازن}:
+}
+شما به دومخزن خصوصی در این درس دسترسی دارید. به عبارت دیگر به یک مخزن برای تمرینهای فردی و به یک مخزن برای تمرینهای گروهی دسترسی دارید.
+ساختار کدهای تمارین فردی را از اینجا و تمارین گروهی را از اینجا میتوانید مشاهده کنید. این دو مخزن در حال حاضر در آدرس ~/code/personal و ~/code/group از ماشین مجازیتان قرار دارند.
+میتوانید از قابلیت “Remotes” در گیت بهره ببیرد تا ساختار کدها را در صورت تغییر یا بروزرسانی آنها از مخازن ما دریافت کنید. همچنین به کمک push کدهای خود را به مخازن نظیرشان ارسال کنید. درواقع قابلیت “Remotes” به شما این امکان را میدهد که مخازن Github را به مخازن محلی خود متصل کنید. درحال حاضر یک remote به نام “staff” قرار داده شده است که به مخازن ما در Github اشاره می کند.
+به منظور افزودن یک remote جدید به ماشین مجازیتان، پیشنهاد می شود گامهای زیر را طی کنید:
+
+\begin{itemize}
+\item
+در ابتدا به مخزن مربوط به تمارین فردی بروید:\begin{flushleft}
+\code{cd ~/code/personal}
+\end{flushleft}
+\item
+سپس مخزن تمارین فردیتان در Github را مشاهده کنید و آدرس SSH clone را بیابید. اگر آدرس فرمتی مشابه “git@github.com:Berkeley-CS162/...” داشت به سراغ گام بعد بروید.
+\item
+به کمک دستور \begin{flushleft}
+\code{git remote add personal YOUR_GITHUB_CLONE_URL}
+\end{flushleft} remote را اضافه کنید.
+میتوانید اطلاعات آن را از طریق دستورهای زیر مشاهده کنید:
+\begin{flushleft}
+\code{git remote -v}
+\code{git remote show personal}
+\end{flushleft}
+\item
+ساختار را pull کرده ، یک کامیت تستی ساخته و آنرا push کنید
+\begin{flushleft}
+\code{git pull staff master}
+\code{touch test_file}
+\code{git add test_file}
+\code{git commit -m "Added a test file."}
+\code{git push personal master}
+\end{flushleft}
+\end{itemize}
+
+\subsection{ویرایش کد در ماشین مجازی}
+ماشین مجازی برای آنکه بتوانید پوشه home از vagrant فایلهایتان را ویریایش کنید، از سرور SMB استفاده میکند. به کمک این سرور میتوانید از هر ویرایشگر متنی که بر روی سیستم خود دارید استفاده کنید تا کدها را ویرایش کرده و دستورهای git را از درون ماشین مجازی خود اجرا کنید.
+این روش پیشنهادی برای کار برروی کدها در این درس است، اما شما آزادید که از هر روشی که به نظرتان مناسب تر است استفاده کنید.
+
+\subsubsection{
+\lr{Windows}:
+}
+\begin{itemize}
+\item
+file browser را باز کرده و دکمه Ctrl L را فشار دهید تا برروی location bar focus کنید.
+\item
+عبارت “\\192.168.162.162\vagrant” را تایپ کرده و دکمه Enter را فشار دهید.
+\item
+نام کاربری و رمز عبور هر دو برابر است با: vagrant
+\end{itemize}
+\subsubsection{
+\lr{Mac OS X}:
+}
+\begin{itemize}
+\item
+Finder را باز کنید.
+\item
+قسمت “Go → Connect to Server...” را انتخاب کنید.
+\item
+آدرس سرور برابر است با: “smb://192.168.162.162/vagrant”.
+\item
+نام کاربری و رمز عبور هر دو برابر است با: vagrant
+\end{itemize}
+\subsubsection{
+\lr{Linux}:
+}
+از هر SMB client میتوانید استفاده کنید تا به “192.168.162.162/vagrant” متصل شوید.
+نام کاربری و رمز عبور برابر است با: vagrant
+
+\subsection{پوشه های اشتراکی}
+پرونده /vagrant در ماشین مجازیتان به پوشه خانه\LTRfootnote{image} سیستم اصلیتان متصل شده است. اگر نیاز داشتید میتوانید از این اتصال استفاده کنید، اگرچه متود SMB که در قسمت قبل گفته شد پیشنهاد می گردد.
